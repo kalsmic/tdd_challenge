@@ -164,4 +164,11 @@ G -->|No|J[Return 204 No Content]
      user_dict = { "username": "Arthur" }
      json_data = json.dumps(user_dict)
      ```
+     
+  ## Refrences
+- [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/14/index.html)
+- [Flask Documentation](https://flask.palletsprojects.com/en/2.1.x/)
+- [HTTP responses status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+- [How to Get and Parse HTTP POST Body in Flask - JSON and Form Data](https://stackabuse.com/how-to-get-and-parse-http-post-body-in-flask-json-and-form-data/)
+- [How to Process Incoming Request Data in Flask](https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask)
 
