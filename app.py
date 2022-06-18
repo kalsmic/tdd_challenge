@@ -1,6 +1,7 @@
 from flask import (Flask, request, redirect, url_for, flash, jsonify)
 from flask_migrate import Migrate
 from model import db
+from api.users import users_bp
 
 
 def create_app(config='config.DevelopmentConfig'):
@@ -18,5 +19,7 @@ def create_app(config='config.DevelopmentConfig'):
     @app.route('/')
     def index():
         return 'Hello, TDD!'
+
+    app.register_blueprint(users_bp)
 
     return app
