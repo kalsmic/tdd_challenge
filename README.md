@@ -72,27 +72,27 @@ B -->|Yes|D[Return 200 OK and User object for specified id]
 ```mermaid
 graph LR
 A[Post User]-->B
-B[Get User Data]-->C{Is Data Valid?}
+B[Get User Data]-->C{Is Data Valid}
 C -->|No|D[Return 400 Bad Request and Message]
-C -->|Yes|E[Create User in Data]
-E -->F{Does User Already Exist }
-F -->|Yes|G[Return 409 Conflict and Message]
-F -->|No |K[(Has the User Been Created?)]
-K -->|Success|L[Return 201 Created, Message, and Created User]
-K -->|Failure|M[Return 500 Internal Server Error and Message]
+C -->|Yes|E{Does User Already Exist }
+E -->|Yes|F[Return 409 Conflict and Message]
+E -->|No|G[Create User]
+G -->|No|H[(Has the User Been Created?)]
+H -->|Success|I[Return 201 Created, Message, and Created User]
+H -->|Failure|J[Return 500 Internal Server Error and Message]
 ```
 
 ### Update a User: PUT `/users`
 
 ```mermaid
 graph LR
-A[PUT User] --> B{Is user id valid?}
+A[PUT User] --> B{Is user id valid}
 B -->|No|C[Return 404 Not Found and Error message]
-B -->|Yes|D{Is Data Valid?}
+B -->|Yes|D{Is Data Valid}
 D -->|No|E[Return 400 Bad Request and Error Message]
 D -->|Yes|F{Is Username Unique}
 F -->|No|G[Return 409 Conflict and Error Message]
-F -->|Yes|H[(Update the User!)]
+F -->|Yes|H[(Has the User data been updated)]
 H -->|Sucess|I[Return 200 Ok and Message]
 H -->|Failure|J[Return 500 Internal Server Error]
 ```
@@ -208,7 +208,7 @@ G -->|No|J[Return 204 No Content]
 - SET the `TEST_DATABASE_URL` environment variable
 - `pytest tests`
 
-## Refrences
+## References
 
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/14/index.html)
 - [Flask Documentation](https://flask.palletsprojects.com/en/2.1.x/)
