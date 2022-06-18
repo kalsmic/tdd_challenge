@@ -31,7 +31,7 @@ classDiagram
 
 ### A Simple User model
 
-We are going to start with a simple User Model so that we can full grasp and appreciate the TDD workflow
+We are going to start with a simple User Model so that we can fully grasp and appreciate the TDD workflow
 
 ```mermaid
 classDiagram
