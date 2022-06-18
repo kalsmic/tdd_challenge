@@ -183,12 +183,10 @@ G -->|No|J[Return 204 No Content]
 - Create and Activate a Python virtual environment
 
 - Install requirements `pip install -r requirements.txt`
-- Set environment variables
-  - SET the variables specified in the env_sample.txt
-  > The DATABASE_URL are different for each environment
-      - DATABASE_URL - Production
-      - DEV_DATABASE_URL - Development
-      - TEST_DATABASE_URL - Testing
+- Set environment variables specified in the env_sample.txt
+  - DATABASE_URL - Production
+  - DEV_DATABASE_URL - Development
+  - TEST_DATABASE_URL - Testing
 - Update the migrations
   - `flask db upgrade`
 - Run the project
