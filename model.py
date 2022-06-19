@@ -42,22 +42,6 @@ class User(db.Model):
         db.session.delete(self)
         db.session.commit()
 
-    def refesh(self):
-        """
-        Refresh a user from the database to get an update version of the User object
-        The user must exist in the database
-        EXAMPLE:
-            user = User.query.filter(User.username == 'joe').first_or_404()
-            user.refresh()
-        """
-        db.session.refresh(self)
-
-    def rollback(self):
-        """
-        Rollback the current transaction
-        """
-        db.session.rollback()
-
     @property
     def serialize(self):
         """Return object data in easily serializeable format"""
