@@ -70,7 +70,7 @@ B -->|Yes|D[Return 200 OK and User object for specified id]
 ### Create a User: POST `/users`
 
 ```mermaid
-graph LR
+graph TD
 A[Post User]-->B
 B[Get User Data]-->C{Is Data Valid}
 C -->|No|D[Return 400 Bad Request and Message]
@@ -85,7 +85,7 @@ H -->|Failure|J[Return 500 Internal Server Error and Message]
 ### Update a User: PUT `/users`
 
 ```mermaid
-graph LR
+graph TD
 A[PUT User] --> B{Is user id valid}
 B -->|No|C[Return 404 Not Found and Error message]
 B -->|Yes|D{Is Data Valid}
@@ -100,7 +100,7 @@ H -->|Failure|J[Return 500 Internal Server Error]
 ### Delete  a User: DELETE `/users/<user_id>`
 
 ```mermaid
-graph LR
+graph TD
 A[DELETE User] --> B{Is user id valid?}
 B -->|No| C[Return 404 Not Found and Error message]
 B -->E[(Delete the user!)]
