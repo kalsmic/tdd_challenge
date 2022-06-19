@@ -11,7 +11,9 @@ users_bp = Blueprint('users_api', __name__, url_prefix='/users')
 def get_users():
     """
     Get all users.
-    Returns:
+    ___
+
+    returns:
     - 200: OK
         A list of users.
     """
@@ -23,13 +25,15 @@ def get_users():
 def get_user(user_id):
     """
     Get a user by id
+    ___
     
-    :param user_id: The id of the user
-    :return: 
+    parameters:
+        user_id: The id of the user
+    returns: 
         - 200: OK
             The user object.
         - 404: Not Found
-            Message:The user with the given id was not found.
+            message:The user with the given id was not found.
     """
     try:
         user = User.query.get_or_404(user_id)
