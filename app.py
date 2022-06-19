@@ -1,10 +1,12 @@
-from flask import (Flask, request, redirect, url_for, flash, jsonify)
+from flask import (Flask)
 from flask_migrate import Migrate
 from model import db
 from api.users import users_bp
 
 
 def create_app(config='config.DevelopmentConfig'):
+    """
+    Create and configure an instance of the Flask application."""
     app = Flask(__name__)
 
     app.config.from_object(config)
