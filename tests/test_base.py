@@ -6,9 +6,19 @@ from app import (
     create_app,
     db,
 )
+from model import User
 
 
 class TestBase(unittest.TestCase):
+    """
+    This is a helper class to setup the database and the app for testing.
+    It also contains helper methods to create dummy data used in the tests.
+    Note:
+        Before all the tests, the database is upgraded.
+        After all the tests, the database is downgraded.
+        Before each test, the app is initialized.
+        After each test, the tables are truncated
+    """
     @classmethod
     def setUpClass(cls) -> None:
         """
@@ -54,3 +64,15 @@ class TestBase(unittest.TestCase):
         db.session.remove()
 
         self.app_context.pop()
+
+    def create_dummy_user(self, username='test_user'):
+        """
+        Create a dummy user to testAPI functionality with.
+        args:
+            username: The username of the user.
+        returns:
+            The user object.
+        """
+        user = User(username=username)
+        user.insert()
+        return user
