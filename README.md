@@ -1,4 +1,5 @@
 # TDD Simplified
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/kalsmic/tdd_challenge/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kalsmic/tdd_challenge/tree/main) [![Coverage Status](https://coveralls.io/repos/github/kalsmic/tdd_challenge/badge.svg?branch=main)](https://coveralls.io/github/kalsmic/tdd_challenge?branch=main)
 
 ## The Test Driven Development Cycle
 

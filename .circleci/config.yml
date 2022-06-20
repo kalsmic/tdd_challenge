@@ -1,0 +1,42 @@
+version: 2.1
+orbs:
+  python: circleci/python@2.0.3
+  coveralls: coveralls/coveralls@1.0.4
+jobs:
+  build-and-test:
+    docker:
+      - image: cimg/python:3.7.4
+      - image: cimg/postgres:14.0
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: tdd_test
+    steps:
+      - checkout
+      - 
+        python/install-packages:
+          pkg-manager: pip
+
+      - 
+        run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.6.1
+      - 
+        run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - 
+        run:
+          name: Setup testing environment
+          command: pip install coverage coveralls
+      - 
+        run:
+          name: Run tests
+          command: |
+            coverage run -m pytest tests
+            coverage json -o .coverage.json &&  coveralls --submit .coverage.json
+workflows:
+  run-tests:
+    jobs:
+      - build-and-test
