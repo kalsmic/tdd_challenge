@@ -1,8 +1,11 @@
+"""
+This module contains test for the application's basic functionality.
+"""
 
-from tests.test_base import TestBase
+from tests.test_base import BaseTestCase
 
 
-class TestUsers(TestBase):
+class AppTestCase(BaseTestCase):
 
     def test_hello_tdd(self):
         """

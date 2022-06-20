@@ -1,3 +1,7 @@
+"""
+This module contains functions to validate user inputs.
+"""
+
 from model import User
 
 

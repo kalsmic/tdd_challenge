@@ -1,3 +1,6 @@
+"""
+This module contains endpoints for the user Resource
+"""
 import sys
 
 import sqlalchemy

@@ -1,3 +1,6 @@
+"""
+This module contains a custom parent base test case class.
+"""
 import os
 import unittest
 from flask_migrate import upgrade
@@ -9,7 +12,7 @@ from app import (
 from model import User
 
 
-class TestBase(unittest.TestCase):
+class BaseTestCase(unittest.TestCase):
     """
     This is a helper class to setup the database and the app for testing.
     It also contains helper methods to create dummy data used in the tests.

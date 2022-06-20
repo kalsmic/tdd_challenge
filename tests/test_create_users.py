@@ -4,10 +4,10 @@ This module contains the unit tests for the create users endpoint."""
 
 import json
 
-from tests.test_base import TestBase
+from tests.test_base import BaseTestCase
 
 
-class TestCreateUsers(TestBase):
+class CreateUsersTestCase(BaseTestCase):
     """
     Test functions that create users"""
 

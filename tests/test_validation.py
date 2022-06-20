@@ -7,7 +7,7 @@ import unittest
 from helpers.validation import USERNAME_MAX_LENGTH, USERNAME_MIN_LENGTH, validate_username
 
 
-class TestValidation(unittest.TestCase):
+class ValidationTestCase(unittest.TestCase):
     """
     Test functions that validate user inputs"""
 

@@ -1,8 +1,11 @@
-from tests.test_base import TestBase
+"""
+This module contains test for the get users endpoints 
+"""
+from tests.test_base import BaseTestCase
 from model import User
 
 
-class TestUsers(TestBase):
+class GetUsersTestCase(BaseTestCase):
     def test_get_users_returns_status_200_and_empty_list_if_no_users_exist(
             self):
         """

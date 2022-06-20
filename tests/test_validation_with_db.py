@@ -2,10 +2,10 @@
 This module contains tests that test validation which are not related to the database.
 """
 from helpers.validation import is_username_in_db
-from tests.test_base import TestBase
+from tests.test_base import BaseTestCase
 
 
-class TestValidationWithDb(TestBase):
+class ValidationWithDbTestCase(BaseTestCase):
     """
     Test functions that validate functions that involve data validation from the database"""
 
