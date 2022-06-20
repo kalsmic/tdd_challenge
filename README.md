@@ -24,7 +24,6 @@ classDiagram
  User : +insert()
  User : +update()
  User : +delete()
- User : +refresh()
  User : serialize
  User : __repr__()
  
@@ -42,7 +41,6 @@ classDiagram
  User : +insert()
  User : +update()
  User : +delete()
- User : +refresh()
  User : serialize
  User : __repr__()
 
@@ -113,6 +111,46 @@ G -->|No|J[Return 204 No Content]
 
 ```
 
+## Dependecies
+
+- [Flask](https://flask.palletsprojects.com/en/2.1.x/)
+- [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/)
+- [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
+- [Pytest](https://docs.pytest.org/en/7.1.x/getting-started.html)
+- [autopep8](https://github.com/hhatto/autopep8)
+
+## How to set up and run the project
+
+- Create and Activate a Python virtual environment
+
+- Install requirements `pip install -r requirements.txt`
+- Set environment variables specified in the env_sample.txt
+  - DATABASE_URL - Production
+  - DEV_DATABASE_URL - Development
+  - TEST_DATABASE_URL - Testing
+  > Remember to create separate databases for testing and running the code
+- Update the migrations
+  - `flask db upgrade`
+- Run the project
+  - `python -m run`
+
+### How to Create and Activate a Python virtual Environment
+
+- Open your terminal at the root of the project
+- create a virtual environment `python -m venv env`
+- Activate the virtual environment
+  - for windows `env\Scripts\activate`
+  - for linux\macOS `source env/bin/activate`
+- Deactivate the virtual environment
+  - `deactivate`
+
+## How to run tests
+
+- Activate the virtual environment
+- Create you test database
+- SET the `TEST_DATABASE_URL` environment variable
+- `pytest tests`
+  
 ## Important to know
 
 ### how to get json data from the request object
@@ -171,44 +209,6 @@ G -->|No|J[Return 204 No Content]
      json_data = json.dumps(user_dict)
      ```
 
-## Dependecies
-
-- [Flask](https://flask.palletsprojects.com/en/2.1.x/)
-- [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/)
-- [Flask-Migrate](https://flask-migrate.readthedocs.io/en/latest/)
-- [Pytest](https://docs.pytest.org/en/7.1.x/getting-started.html)
-- [autopep8](https://github.com/hhatto/autopep8)
-
-## How to set up and run the project
-
-- Create and Activate a Python virtual environment
-
-- Install requirements `pip install -r requirements.txt`
-- Set environment variables specified in the env_sample.txt
-  - DATABASE_URL - Production
-  - DEV_DATABASE_URL - Development
-  - TEST_DATABASE_URL - Testing
-- Update the migrations
-  - `flask db upgrade`
-- Run the project
-  - `python -m run`
-
-### How to Create and Activate a Python virtual Environment
-
-- Open your terminal at the root of the project
-- create a virtual environment `python -m venv env`
-- Activate the virtual environment
-  - for windows `env\Scripts\activate`
-  - for linux\macOS `source env/bin/activate`
-- Deactivate the virtual environment
-  - `deactivate`
-
-## How to run tests
-
-- Activate the virtual environment
-- SET the `TEST_DATABASE_URL` environment variable
-- `pytest tests`
-
 ## References
 
 - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/en/14/index.html)
@@ -217,3 +217,4 @@ G -->|No|J[Return 204 No Content]
 - [How to Get and Parse HTTP POST Body in Flask - JSON and Form Data](https://stackabuse.com/how-to-get-and-parse-http-post-body-in-flask-json-and-form-data/)
 - [How to Process Incoming Request Data in Flask](https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask)
 - [Running alembic migrations in flask tests](https://blog.k-nut.eu/flask-alembic-test)
+- [Python Unittest ASsertions](https://kapeli.com/cheat_sheets/Python_unittest_Assertions.docset/Contents/Resources/Documents/index)
