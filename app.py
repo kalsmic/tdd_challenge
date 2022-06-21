@@ -3,8 +3,9 @@ This module contains the application setup
 """
 from flask import (Flask)
 from flask_migrate import Migrate
-from model import db
+
 from api.users import users_bp
+from model import db
 
 
 def create_app(config='config.DevelopmentConfig'):

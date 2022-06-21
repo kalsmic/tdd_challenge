@@ -1,6 +1,7 @@
 """This module contains a custom parent base test case class."""
 import os
 import unittest
+
 from flask_migrate import upgrade
 
 from app import (
@@ -20,6 +21,7 @@ class BaseTestCase(unittest.TestCase):
         Before each test, the app is initialized.
         After each test, the tables are truncated
     """
+
     @classmethod
     def setUpClass(cls) -> None:
         """

@@ -3,13 +3,12 @@ This module contains endpoints for the user Resource
 """
 import sys
 
-import sqlalchemy
 from flask import jsonify, Blueprint, request
-from helpers.validation import validate_username
-from werkzeug.exceptions import NotFound, BadRequest, Conflict
-from model import User, db
 from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import NotFound, BadRequest, Conflict
 
+from helpers.validation import validate_username
+from model import User, db
 
 users_bp = Blueprint('users_api', __name__, url_prefix='/users')
 

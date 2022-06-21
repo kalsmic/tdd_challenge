@@ -2,7 +2,6 @@
 This module contains test for the get users endpoints
 """
 from tests.test_base import BaseTestCase
-from model import User
 
 
 class GetUsersTestCase(BaseTestCase):

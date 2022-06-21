@@ -1,6 +1,7 @@
 """
 This module contains tests for the update users endpoint."""
 import json
+
 from tests.test_base import BaseTestCase
 
 
@@ -38,6 +39,7 @@ class UpdateUserTestCase(BaseTestCase):
         self.assertEqual(
             response.get_json()['message'],
             'User not found')
+
     def test_update_user_with_duplicate_username_returns_status_409_and_message(self):
         """
         Should return 409 if the username is a duplicate if username already assigned to another user
@@ -92,7 +94,7 @@ class UpdateUserTestCase(BaseTestCase):
         """
         Should return 200 if the username is valid and unique"""
         user = self.create_dummy_user(username="John")
-        new_username ='Jimmy'
+        new_username = 'Jimmy'
         response = self.client.put(
             f'/users/{user.id}',
             data=json.dumps({

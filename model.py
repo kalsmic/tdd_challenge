@@ -3,7 +3,6 @@ This module contains the models for our application
 """
 from flask_sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
 
 

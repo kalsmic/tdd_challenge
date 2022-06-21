@@ -47,7 +47,7 @@ classDiagram
 
 ```
 
-## End Points Sequence Diagrams  
+## End Points Sequence Diagrams
 
 ### Get  Users: GET `/users`
 
@@ -127,24 +127,24 @@ G -->|No|J[Return 204 No Content]
 
 - Install requirements `pip install -r requirements.txt`
 - Set environment variables specified in the env_sample.txt
-  - DATABASE_URL - Production
-  - DEV_DATABASE_URL - Development
-  - TEST_DATABASE_URL - Testing
+    - DATABASE_URL - Production
+    - DEV_DATABASE_URL - Development
+    - TEST_DATABASE_URL - Testing
   > Remember to create separate databases for testing and running the code
 - Update the migrations
-  - `flask db upgrade`
+    - `flask db upgrade`
 - Run the project
-  - `python -m run`
+    - `python -m run`
 
 ### How to Create and Activate a Python virtual Environment
 
 - Open your terminal at the root of the project
 - create a virtual environment `python -m venv env`
 - Activate the virtual environment
-  - for windows `env\Scripts\activate`
-  - for linux\macOS `source env/bin/activate`
+    - for windows `env\Scripts\activate`
+    - for linux\macOS `source env/bin/activate`
 - Deactivate the virtual environment
-  - `deactivate`
+    - `deactivate`
 
 ## How to run tests
 
@@ -152,64 +152,76 @@ G -->|No|J[Return 204 No Content]
 - Create you test database
 - SET the `TEST_DATABASE_URL` environment variable
 - `pytest tests`
-  
+
 ## Important to know
 
 ### how to get json data from the request object
 
 ```json
-{ "username": "Arthur"}
+{
+  "username": "Arthur"
+}
 ```
 
-1. [**json**](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.json) returns a `python dictionary` with `key-value` pairs
+1. [**json**](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.json) returns
+   a `python dictionary` with `key-value` pairs
 
-   - The parsed JSON data if [`mimetype`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.mimetype) indicates JSON (`*application/json`)[`is_json`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.is_json)).
+    - The parsed JSON data
+      if [`mimetype`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.mimetype)indicates
+      JSON (`*application/json`)[`is_json`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.is_json))
+      .
 
-   - Calls [`get_json()`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.get_json) with default arguments.
+    - Calls [`get_json()`](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.get_json)with
+      default arguments.
 
-   - If the request content type is not `application/json`, this will raise a 400 Bad Request error.
+    - If the request content type is not `application/json`, this will raise a 400 Bad Request error.
 
-     ```python
-     data = request.json
-     username = data["username"]
-     ```
+      ```python
+      data = request.json
+      username = data["username"]
+      ```
 
-2. [**get_json**(*force=False*, *silent=False*, *cache=True*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.get_json) returns a `dict` with `key-value` pairs
+2. [**get_json**(*force=False*, *silent=False*, *
+   cache=True*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.Request.get_json) returns
+   a `dict` with `key-value` pairs
 
-     - Raises a 400 error if the content type is incorrect.
+    - Raises a 400 error if the content type is incorrect.
 
-     - **force** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) –   Ignore the mimetype and always try to parse JSON.
+    - **force** ([*bool*](https://docs.python.org/3/library/functions.html#bool)) – Ignore the mimetype and always try
+      to parse JSON.
 
-       ```python
-       data = request.get_json(force=True)
-       ```
+      ```python
+      data = request.get_json(force=True)
+      ```
 
-3. [flask.json.**loads**(*s*, *app=None*, ***kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.loads)
+3. [flask.json.**loads**(*s*, *app=None*, ***
+   kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.loads)
 
-     - Serialize an object to a string of JSON.
+    - Serialize an object to a string of JSON.
 
-       ```python
-       data = json.loads(request.data.decode())
-       ```
+      ```python
+      data = json.loads(request.data.decode())
+      ```
 
 ## How to convert to  python objects  to JSON  String
 
 1. [**flask.json.jsonify**](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.jsonify)
 
-   - Serialize data to JSON and wrap it in a Response with the `application/json` mimetype
+    - Serialize data to JSON and wrap it in a Response with the `application/json` mimetype
 
-     ```python
-     jsonify({"username": "Arthur"})
-     ```
+      ```python
+      jsonify({"username": "Arthur"})
+      ```
 
-2. [flask.json.**dumps**(*obj*, *app=None*, ***kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.dumps)
+2. [flask.json.**dumps**(*obj*, *app=None*, ***
+   kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.dumps)
 
-   - Serialize an object to a string of JSON.
+    - Serialize an object to a string of JSON.
 
-     ```python
-     user_dict = { "username": "Arthur" }
-     json_data = json.dumps(user_dict)
-     ```
+      ```python
+      user_dict = { "username": "Arthur" }
+      json_data = json.dumps(user_dict)
+      ```
 
 ## References
 

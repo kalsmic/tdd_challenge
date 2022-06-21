@@ -1,9 +1,8 @@
 """This module contains the unit tests for the create users endpoint."""
 
-
 import json
-from model import User
 
+from model import User
 from tests.test_base import BaseTestCase
 
 

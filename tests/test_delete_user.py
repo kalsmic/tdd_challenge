@@ -16,7 +16,7 @@ class DeleteTestCase(BaseTestCase):
         Should return 200 and message if user is deleted
         """
         user = self.create_dummy_user()
-        user_id=user.id
+        user_id = user.id
         response = self.client.delete(f'/users/{user_id}')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json['message'], f'User with id {user.id} deleted')
