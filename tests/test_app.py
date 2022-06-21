@@ -13,3 +13,12 @@ class AppTestCase(BaseTestCase):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data, b'Hello, TDD!')
+
+    def test_user_model_repr_result(self):
+        """
+        Test the User model's __repr__ method."""
+        user = self.create_dummy_user()
+        self.assertEqual(
+            repr(user),
+            f"User('{user.id} {user.username}')"
+        )
