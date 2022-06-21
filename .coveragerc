@@ -1,0 +1,10 @@
+[report]
+omit =
+    *.pyc
+    */__init__.py
+    */__pycache__/*
+    */migrations/*
+    */tests/*
+    */venv/*
+    */env/*
+    */.env/*
