@@ -33,6 +33,6 @@ def is_username_in_db(username):
     Returns UserObject if the username exists, None otherwise.
     """
     if not username:
-        return False
+        return None
     user = User.query.filter_by(username=username).first()
     return user

@@ -83,3 +83,56 @@ def create_user():
         db.session.rollback()
         return jsonify({'message': f'Username {username} already exists'}), 409
     return jsonify(user.serialize), 201
+
+
+@users_bp.route('/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    """
+    Update a user.
+    ___
+
+    parameters:
+        user_id: The id of the user.
+    body:
+        username: The username of the user.
+    returns:
+        - 200: OK
+            The user object.
+        - 400: Bad Request
+            message: Invalid request data.
+        - 404: Not Found
+            message:The user with the given id was not found.
+        - 409: Conflict
+            message: Username already exists.
+    """
+    try:
+        user = User.query.get_or_404(user_id)
+        username = request.json['username']
+
+        if not validate_username(username):
+            raise BadRequest
+        if user.username == username:
+            return '', 204
+
+        username_already_assigned_another_user = User.query.filter(
+            User.id.notin_([user_id])).filter(User.username.ilike(username)).first()
+
+        if username_already_assigned_another_user:
+            raise Conflict
+
+        user.username = username
+        user.update()
+    except (BadRequest, KeyError):
+        print(sys.exc_info())
+        db.session.rollback()
+        return jsonify({'message': 'Invalid request data'}), 400
+    except (IntegrityError, Conflict):
+        print(sys.exc_info())
+        db.session.rollback()
+        return jsonify({'message': f'Username {username} already exists'}), 409
+    except NotFound:
+        print(sys.exc_info())
+        db.session.rollback()
+        return jsonify({'message': 'User not found'}), 404
+    return jsonify(user=user.serialize,
+                   message="User Updated Successfully"), 200
