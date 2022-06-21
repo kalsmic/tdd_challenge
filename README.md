@@ -1,4 +1,5 @@
 # TDD Simplified
+
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/kalsmic/tdd_challenge/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kalsmic/tdd_challenge/tree/main) [![Coverage Status](https://coveralls.io/repos/github/kalsmic/tdd_challenge/badge.svg?branch=main)](https://coveralls.io/github/kalsmic/tdd_challenge?branch=main)
 
 ## The Test Driven Development Cycle
@@ -92,8 +93,9 @@ D -->|No|E[Return 400 Bad Request and Error Message]
 D -->|Yes|F{Is Username Unique}
 F -->|No|G[Return 409 Conflict and Error Message]
 F -->|Yes|H[(Has the User data been updated)]
-H -->|Sucess|I[Return 200 Ok and Message]
-H -->|Failure|J[Return 500 Internal Server Error]
+H -->|Sucess - Modified|I[Return 200 Ok and Message]
+H -->|Sucess - Not modified|J[Return 204 No Content]
+H -->|Failure - Error occured |K[Return 500 Internal Server Error]
 ```
 
 ### Delete  a User: DELETE `/users/<user_id>`
@@ -200,7 +202,7 @@ G -->|No|J[Return 204 No Content]
      jsonify({"username": "Arthur"})
      ```
 
-3. [flask.json.**dumps**(*obj*, *app=None*, ***kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.dumps)
+2. [flask.json.**dumps**(*obj*, *app=None*, ***kwargs*)](https://flask.palletsprojects.com/en/2.1.x/api/?highlight=request#flask.json.dumps)
 
    - Serialize an object to a string of JSON.
 

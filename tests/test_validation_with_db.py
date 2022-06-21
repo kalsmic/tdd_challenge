@@ -25,3 +25,10 @@ class ValidationWithDbTestCase(BaseTestCase):
         user_object = is_username_in_db('username')
         self.assertEqual(user_object.username, 'username')
         self.assertEqual(user_object.id, user.id)
+
+    def test_validate_username_exists_returns_none_if_username_is_none(
+            self):
+        """
+        Should return None if the username is None
+        """
+        self.assertIsNone(is_username_in_db(None))
