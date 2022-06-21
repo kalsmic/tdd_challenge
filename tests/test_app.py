@@ -1,6 +1,4 @@
-"""
-This module contains test for the application's basic functionality.
-"""
+"""This module contains test for the application's basic functionality."""
 
 from tests.test_base import BaseTestCase
 

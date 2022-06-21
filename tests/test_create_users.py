@@ -1,8 +1,8 @@
-"""
-This module contains the unit tests for the create users endpoint."""
+"""This module contains the unit tests for the create users endpoint."""
 
 
 import json
+from model import User
 
 from tests.test_base import BaseTestCase
 
@@ -90,3 +90,7 @@ class CreateUsersTestCase(BaseTestCase):
         self.assertEqual(user['username'], 'udacians')
         self.assertIn('id', user)
         self.assertIsNotNone(user['id'])
+        new_user_in_db = User.query.get(user['id'])
+        self.assertIsNotNone(new_user_in_db)
+        self.assertEqual(user["id"], new_user_in_db.id)
+        self.assertEqual(user["username"], new_user_in_db.username)

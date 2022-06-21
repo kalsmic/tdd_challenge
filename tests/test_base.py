@@ -1,6 +1,4 @@
-"""
-This module contains a custom parent base test case class.
-"""
+"""This module contains a custom parent base test case class."""
 import os
 import unittest
 from flask_migrate import upgrade
