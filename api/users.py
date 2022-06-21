@@ -138,3 +138,25 @@ def update_user(user_id):
         return jsonify({'message': 'User not found'}), 404
     return jsonify(user=user.serialize,
                    message="User Updated Successfully"), 200
+
+
+@users_bp.route('/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    """
+    Delete a user.
+    ___
+
+    parameters:
+        user_id: The id of the user.
+    returns:
+        - 200: OK
+            The user object.
+        - 404: Not Found
+            message:The user with the given id was not found.
+    """
+    try:
+        user = User.query.get_or_404(user_id)
+        user.delete()
+    except NotFound:
+        return jsonify({'message': 'User not found'}), 404
+    return jsonify(message=f"User with id {user_id} deleted"), 200
