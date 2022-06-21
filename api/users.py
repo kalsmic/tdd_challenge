@@ -98,6 +98,8 @@ def update_user(user_id):
     returns:
         - 200: OK
             The user object.
+        - 204: No Content
+            No new updates were made to the user.
         - 400: Bad Request
             message: Invalid request data.
         - 404: Not Found
