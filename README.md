@@ -125,36 +125,60 @@ G -->|No|J[Return 204 No Content]
 
 -   Create and Activate a Python virtual environment
 
--   Install requirements `pip install -r requirements.txt`
+-   Install requirements 
+    ```bash
+    pip install -r requirements.txt 
+    ```
 
 -   Set environment variables specified in the env_sample.txt
-    -   DATABASE_URL - Production
-    -   DEV_DATABASE_URL - Development
-    -   TEST_DATABASE_URL - Testing
+    -   DATABASE_URL for Production
+    -   DEV_DATABASE_URL for Development
+    -   TEST_DATABASE_URL for Testing
         > Remember to create separate databases for testing and running the code
 
 -   Update the migrations
-    -   `flask db upgrade`
+    ```bash
+    flask db upgrade
+    ```
 
 -   Run the project
-    -   `python -m run`
+    ```bash
+    python -m run
+    ```
 
 ### How to Create and Activate a Python virtual Environment
 
 -   Open your terminal at the root of the project
--   create a virtual environment `python -m venv env`
+
+-   create a virtual environment
+    ```bash
+    python -m venv env
+    ```
+
 -   Activate the virtual environment
-    -   for windows `env\Scripts\activate`
-    -   for linux\\macOS `source env/bin/activate`
+    -   for windows 
+        ```bash
+        env\Scripts\activate
+        ```
+    -   for linux\\macOS
+        ```bash
+        source env/bin/activate
+        ```
+
 -   Deactivate the virtual environment
-    -   `deactivate`
+    ```bash
+    deactivate
+    ```
 
 ## How to run tests
 
 -   Activate the virtual environment
 -   Create you test database
 -   SET the `TEST_DATABASE_URL` environment variable
--   `pytest tests`
+-   Run the tests using pytest   
+    ```bash
+      pytest tests
+    ```
 
 ## Important to know
 

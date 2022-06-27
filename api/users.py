@@ -5,7 +5,7 @@ import sys
 
 from flask import jsonify, Blueprint, request
 from sqlalchemy.exc import IntegrityError
-from werkzeug.exceptions import NotFound, BadRequest, Conflict
+from werkzeug.exceptions import BadRequest, Conflict
 
 from helpers.validation import validate_username, user_id_exists_or_404
 from model import User, db
