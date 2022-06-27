@@ -1,6 +1,11 @@
 """
 This module contains functions to validate user inputs.
 """
+import sys
+from functools import wraps
+
+from flask import jsonify
+from werkzeug.exceptions import NotFound
 
 from model import User
 
@@ -35,3 +40,20 @@ def is_username_in_db(username):
         return None
     user = User.query.filter_by(username=username).first()
     return user
+
+
+def user_id_exists_or_404(func):
+    @wraps(func)  # preserve the decorated function attributes
+    def wrapper(*args, **kwargs):
+        try:
+            user_id = kwargs['user_id']
+            user = User.query.get_or_404(user_id)
+            # add the user object to the function arguments
+            kwargs.update({'user_obj': user})
+            print(f"{kwargs}")
+            return func(*args, **kwargs)
+        except NotFound:
+            print(sys.exc_info())
+            return jsonify({'message': 'User not found'}), 404
+
+    return wrapper

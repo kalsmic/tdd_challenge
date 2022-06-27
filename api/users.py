@@ -7,7 +7,7 @@ from flask import jsonify, Blueprint, request
 from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import NotFound, BadRequest, Conflict
 
-from helpers.validation import validate_username
+from helpers.validation import validate_username, user_id_exists_or_404
 from model import User, db
 
 users_bp = Blueprint('users_api', __name__, url_prefix='/users')
@@ -28,7 +28,8 @@ def get_users():
 
 
 @users_bp.route('/<int:user_id>')
-def get_user(user_id):
+@user_id_exists_or_404
+def get_user(user_id, user_obj):
     """
     Get a user by id
     ___
@@ -41,10 +42,8 @@ def get_user(user_id):
         - 404: Not Found
             message:The user with the given id was not found.
     """
-    try:
-        user = User.query.get_or_404(user_id)
-    except NotFound:
-        return jsonify({'message': 'User not found'}), 404
+    # Get the user_obj added via the user_id_exists_or_404 decorator
+    user = user_obj
     return jsonify(user.serialize), 200
 
 
@@ -85,7 +84,8 @@ def create_user():
 
 
 @users_bp.route('/<int:user_id>', methods=['PUT'])
-def update_user(user_id):
+@user_id_exists_or_404
+def update_user(user_id, user_obj):
     """
     Update a user.
     ___
@@ -107,7 +107,8 @@ def update_user(user_id):
             message: Username already exists.
     """
     try:
-        user = User.query.get_or_404(user_id)
+        # Get the user_obj added via the user_id_exists_or_404 decorator
+        user = user_obj
         username = request.json['username']
 
         if not validate_username(username):
@@ -131,16 +132,13 @@ def update_user(user_id):
         print(sys.exc_info())
         db.session.rollback()
         return jsonify({'message': f'Username {username} already exists'}), 409
-    except NotFound:
-        print(sys.exc_info())
-        db.session.rollback()
-        return jsonify({'message': 'User not found'}), 404
     return jsonify(user=user.serialize,
                    message="User Updated Successfully"), 200
 
 
 @users_bp.route('/<int:user_id>', methods=['DELETE'])
-def delete_user(user_id):
+@user_id_exists_or_404
+def delete_user(user_id, user_obj):
     """
     Delete a user.
     ___
@@ -153,9 +151,7 @@ def delete_user(user_id):
         - 404: Not Found
             message:The user with the given id was not found.
     """
-    try:
-        user = User.query.get_or_404(user_id)
-        user.delete()
-    except NotFound:
-        return jsonify({'message': 'User not found'}), 404
+    # Get the user_obj added via the user_id_exists_or_404 decorator
+    user = user_obj
+    user.delete()
     return jsonify(message=f"User with id {user_id} deleted"), 200
