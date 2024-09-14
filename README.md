@@ -1,4 +1,4 @@
-# TDD Simplified
+# TDD Simplified Demonstration
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/kalsmic/tdd_challenge/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/kalsmic/tdd_challenge/tree/main) [![Coverage Status](https://coveralls.io/repos/github/kalsmic/tdd_challenge/badge.svg?branch=main)](https://coveralls.io/github/kalsmic/tdd_challenge?branch=main) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/24a62b1c0d794cf89b433aabfd11da45)](https://www.codacy.com/gh/kalsmic/tdd_challenge/dashboard?utm_source=github.com&utm_medium=referral&utm_content=kalsmic/tdd_challenge&utm_campaign=Badge_Grade)
 
